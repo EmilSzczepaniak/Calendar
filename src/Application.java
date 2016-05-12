@@ -1,3 +1,8 @@
+import javax.swing.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -5,34 +10,31 @@ import java.util.Scanner;
 /**
  * Created by Emil on 11.05.2016.
  */
-public class Application  {
-    static List<Events> eventsList = new ArrayList<Events>();
-    static Scanner scanner = new Scanner(System.in);
+public class Application {
     public static void main(String[] args) {
-        createEvent();
-        for (Events event : eventsList
-             ) {
-            System.out.println(event);
+        GUI gui = new GUI();
+        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        gui.setVisible(true);
+
+        Connection connection = null;
+
+
+
+        try{
+            connection = DBConnect.getConnection();
+            if(connection !=null);
+            System.out.println("Connection established!");
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(connection != null)
+                try{
+                    connection.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
 
         }
-
-    }
-
-
-
-    public static void createEvent(){
-        String date;
-        String time;
-        String note;
-        Events event = new Events();
-        date = scanner.next();
-        time = scanner.next();
-        note = scanner.next();
-
-        event.setDate(date);
-        event.setTime(time);
-        event.setNote(note);
-        eventsList.add(new Events(date,time,note));
 
     }
 }

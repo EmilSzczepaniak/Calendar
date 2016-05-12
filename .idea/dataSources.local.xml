@@ -4,6 +4,8 @@
     <data-source name="MySQLLenovo" uuid="0aa535a5-8f71-4ef0-aa66-f829d70d2e7a">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
+      <schema-pattern>intelij.*</schema-pattern>
+      <default-schemas>intelij.*</default-schemas>
     </data-source>
   </component>
 </project>
