@@ -1,11 +1,16 @@
 import javafx.scene.control.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.html.ImageView;
 import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Emil on 12.05.2016.
@@ -17,12 +22,21 @@ public class GUI extends JFrame implements ActionListener {
     private JTextField tfDatePicker,tfTimePicker;
     private JTable tblDbDate;
     private JMenuBar menuBar;
+    private ImageIcon image;
 
 
-   public GUI(){
+   public GUI() throws IOException {
        super("Calendar");
        setSize(600,400);
        setLayout(null);
+       BufferedImage myPicture = ImageIO.read(new File("calendar.png"));
+       JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+       picLabel.setBounds(300,40,50,50);
+       add(picLabel);
+
+
+
+
 
        btnAdd = new JButton("Dodaj zdarzenie");
        btnAdd.setBounds(60,320,140,20);
@@ -65,6 +79,10 @@ public class GUI extends JFrame implements ActionListener {
        btnExit.setBounds(420,320,140,20);
        add(btnExit);
        btnExit.addActionListener(this);
+
+
+
+
 
 
 

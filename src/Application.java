@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * Created by Emil on 11.05.2016.
  */
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         GUI gui = new GUI();
         gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gui.setVisible(true);
